@@ -71,7 +71,7 @@ const handleCodeChange = (type: "html" | "css" | "js", value: string) => {
   }, [code]);
 
   // Live updates for all viewers
-  useEffect(() => {
+useEffect(() => {
   if (!loaded) return;
 
   const channel = supabase
@@ -96,7 +96,10 @@ const handleCodeChange = (type: "html" | "css" | "js", value: string) => {
     )
     .subscribe();
 
-  return () => supabase.removeChannel(channel);
+  // FIX: Explicitly return a function that calls supabase.removeChannel
+  return () => {
+    supabase.removeChannel(channel);
+  };
 }, [loaded, code]);
 
 
