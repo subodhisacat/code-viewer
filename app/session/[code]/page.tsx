@@ -112,7 +112,7 @@ useEffect(() => {
         .from("sessions")
         .update({ html, css, js })
         .eq("id", sessionId);
-    }, 500); // save every 0.5s
+    }, 50); // save every 0.05s
 
     return () => clearInterval(handler);
   }, [html, css, js, canEdit, sessionId]);
