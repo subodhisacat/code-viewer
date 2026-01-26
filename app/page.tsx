@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 import "./globals.css";
+
 export default function Home() {
   const [code, setCode] = useState("");
 
@@ -41,21 +42,39 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Live Code Session</h1>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      minHeight: '100vh', 
+      padding: 40 
+    }}>
+      {/* Main Content Area */}
+      <div style={{ flex: 1 }}>
+        <h1>Live Code Session</h1>
 
-      <button onClick={createSession}>Create Session</button>
+        <button onClick={createSession}>Create Session</button>
 
-      <hr />
+        <hr />
 
-      <input
-        placeholder="Enter 3 digit code"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-      />
-      <br /><br />
+        <input
+          placeholder="Enter 3 digit code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+        <br /><br />
 
-      <button onClick={joinSession}>Join Session</button>
+        <button onClick={joinSession}>Join Session</button>
+      </div>
+
+      {/* Footer Section */}
+      <footer style={{ 
+        textAlign: 'center', 
+        padding: '20px 0', 
+        marginTop: 'auto',
+        borderTop: '1px solid #eaeaea'
+      }}>
+        <p>© {new Date().getFullYear()} subodhisacat</p>
+      </footer>
     </div>
   );
 }
