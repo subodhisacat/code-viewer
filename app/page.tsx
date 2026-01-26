@@ -50,7 +50,7 @@ export default function Home() {
     }}>
       {/* Main Content Area */}
       <div style={{ flex: 1 }}>
-        <h1>Live Code Session</h1>
+        <h1>Copy and Paste</h1>
 
         <button onClick={createSession}>Create Session</button>
 
