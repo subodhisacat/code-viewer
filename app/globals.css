@@ -25,7 +25,56 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 2. Custom Scrollbar (The "Developer Tool" look) */
+/* 2. GLOBAL BUTTON STYLING (The "Professional" Look) */
+button {
+  /* Dimensions & Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  
+  /* Colors & Borders */
+  background: linear-gradient(to bottom, #3b82f6, #2563eb);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  
+  /* Shadow & Depth */
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  user-select: none;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  background: #2563eb;
+  scale: 0.96; /* Professional "click" feel */
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  transform: none;
+}
+
+/* 3. Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -45,21 +94,12 @@ html, body {
   background: #334155;
 }
 
-/* 3. Glassmorphism Utilities */
+/* 4. Glassmorphism Utilities */
 .glass-panel {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* 4. Glowing Text & Elements */
-.text-glow {
-  text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-}
-
-.border-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
 }
 
 /* 5. Monaco Editor Styling Fixes */
@@ -75,15 +115,4 @@ html, body {
 
 .animate-slide-up {
   animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* 7. Vercel-style Button Gradients */
-.btn-gradient {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  transition: all 0.3s ease;
-}
-
-.btn-gradient:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
 }
