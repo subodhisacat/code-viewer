@@ -1,89 +1,121 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --accent: #3b82f6;
+/* Base Container */
+.home-container {
+  min-height: 100vh;
+  background-color: #020617;
+  background-image: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* 1. Base Reset & Typography */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.hero-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 2rem;
 }
 
-html, body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Typography */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -3px;
+  margin-bottom: 0.5rem;
 }
 
-/* 2. Custom Scrollbar (The "Developer Tool" look) */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+h1 span { color: #3b82f6; }
+
+p {
+  color: #94a3b8;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background);
+/* Button & Input Reset */
+button, input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::-webkit-scrollbar-thumb {
+/* Primary Button (Create) */
+.primary-btn {
+  width: 100%;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5);
+}
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+/* Secondary Button & Input Group */
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.secondary-btn {
+  padding: 0 24px;
   background: #1e293b;
-  border-radius: 10px;
-  border: 2px solid var(--background);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #334155;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.secondary-btn:hover {
   background: #334155;
+  border-color: #475569;
 }
 
-/* 3. Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Divider */
+.divider {
+  margin: 2rem 0;
+  border-top: 1px solid #1e293b;
+  position: relative;
 }
 
-/* 4. Glowing Text & Elements */
-.text-glow {
-  text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-}
-
-.border-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
-}
-
-/* 5. Monaco Editor Styling Fixes */
-.monaco-editor, .overflow-guard {
-  border-radius: 0 0 12px 12px !important;
-}
-
-/* 6. Animations */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* 7. Vercel-style Button Gradients */
-.btn-gradient {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  transition: all 0.3s ease;
-}
-
-.btn-gradient:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+.divider span {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0b1222;
+  padding: 0 12px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #475569;
 }
