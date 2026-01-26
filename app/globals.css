@@ -1,143 +1,89 @@
-  .session-container {
-    padding: 24px;
-    background: #020617; /* Matches landing page */
-    min-height: 100vh;
-    color: #f8fafc;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    margin-bottom: 4px;
-    color: #fff;
-  }
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --accent: #3b82f6;
+}
 
-  .mode {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 12px;
-    font-weight: 600;
-    background: rgba(59, 130, 246, 0.1);
-    color: #60a5fa;
-    margin-bottom: 24px;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-  }
+/* 1. Base Reset & Typography */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-  .editor-preview-container {
-    display: flex;
-    gap: 20px;
-    height: calc(100vh - 160px); /* Fill remaining screen */
-  }
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  /* LEFT: THE EDITOR CARD */
-  .editor-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background: #0f172a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  }
+/* 2. Custom Scrollbar (The "Developer Tool" look) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  .copy-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 12px 16px;
-    background: rgba(15, 23, 42, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
 
-  .copy-btn {
-    background: #fff;
-    color: #000;
-    font-size: 12px;
-    padding: 6px 14px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
 
-  .copy-btn:hover {
-    background: #e2e8f0;
-    transform: translateY(-1px);
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
 
-  .copy-btn:active {
-    transform: translateY(0);
-  }
+/* 3. Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-  /* THE TABS */
-  .tab-bar {
-    display: flex;
-    background: #0f172a;
-    padding: 0 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
+/* 4. Glowing Text & Elements */
+.text-glow {
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
 
-  .tab {
-    padding: 14px 24px;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    color: #64748b;
-    font-weight: 600;
-    position: relative;
-    transition: color 0.2s;
-  }
+.border-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
 
-  .tab:hover {
-    color: #cbd5e1;
-  }
+/* 5. Monaco Editor Styling Fixes */
+.monaco-editor, .overflow-guard {
+  border-radius: 0 0 12px 12px !important;
+}
 
-  .tab.active {
-    color: #fff;
-  }
+/* 6. Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #3b82f6;
-  }
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-  .editor-container {
-    flex: 1;
-    background: #1e1e1e;
-  }
+/* 7. Vercel-style Button Gradients */
+.btn-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  transition: all 0.3s ease;
+}
 
-  /* RIGHT: THE PREVIEW */
-  .preview-frame {
-    flex: 1;
-    background: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-  }
-
-  /* CUSTOM SCROLLBAR FOR PRO LOOK */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #475569;
-  }
+.btn-gradient:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
