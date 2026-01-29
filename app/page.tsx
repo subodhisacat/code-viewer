@@ -18,8 +18,8 @@ export default function Home() {
         code: sessionCode,
         editor_id: editorId,
         html: "<h1>Hello World</h1>",
-        css: "h1 { color: blue; }",
-        js: "console.log('hello')",
+        css: "body { background:white; }",
+        js: "",
       })
       .select()
       .single();
